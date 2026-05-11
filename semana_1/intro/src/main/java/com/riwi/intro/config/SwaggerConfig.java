@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
         version = "1.0",
         description = "API de prueba nueva",
         contact = @Contact(name = "Soporte Riwi", email = "info@riwi.io")
+
 ))
 public class SwaggerConfig {
 }

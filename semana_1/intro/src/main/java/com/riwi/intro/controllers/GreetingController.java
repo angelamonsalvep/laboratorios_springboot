@@ -1,13 +1,13 @@
 package com.riwi.intro.controllers;
 
+import com.riwi.intro.Event;
 import com.riwi.intro.service.GreetingService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Tag(name = "Greeting", description = "This controller allow manage greets")
 public class GreetingController {
 
     private final GreetingService service;
@@ -17,7 +17,12 @@ public class GreetingController {
     }
 
     @GetMapping("/greet")
-    public String greet(@RequestParam(defaultValue = "Coder") String name) {
+    public String greet(@RequestBody() Event event) {
+        return service.getPersonalizedGreeting(event.getName());
+    }
+
+    @GetMapping("/greet_v2")
+    public String greetv2(@RequestParam(defaultValue = "Coder") String name) {
         return service.getPersonalizedGreeting(name);
     }
 }
