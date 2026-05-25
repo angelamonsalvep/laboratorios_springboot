@@ -1,5 +1,6 @@
 package com.riwi.thymeleaf_test;
 
+import com.riwi.thymeleaf_test.model.Editorial;
 import com.riwi.thymeleaf_test.model.Libro;
 import com.riwi.thymeleaf_test.repository.LibroRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -17,12 +18,12 @@ public class DataSeed implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (libroRepository.count() == 0) {
-            for (int i = 1; i <= 50; i++) {
-                libroRepository.save(new Libro(null, "Libro de Prueba " + i, "Autor " + (i % 5), "ISBN-" + i, 2020 + (i % 5)));
-            }
-            System.out.println("✅ Datos de prueba insertados.");
-        }
+//        if (libroRepository.count() == 0) {
+//            for (int i = 1; i <= 50; i++) {
+//                libroRepository.save(new Libro("Libro de Prueba " + i, "Autor " + (i % 5), "ISBN-" + i, 2020 + (i % 5), new Editorial()));
+//            }
+//            System.out.println("✅ Datos de prueba insertados.");
+//        }
 
     }
 }

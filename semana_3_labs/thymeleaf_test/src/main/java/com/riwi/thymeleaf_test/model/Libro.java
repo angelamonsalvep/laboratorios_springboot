@@ -19,18 +19,26 @@ public class Libro {
     @Column(unique = true, length = 20)
     private String isbn;
 
+    @Column(name = "anio_publicacion")
     private int anioPublicacion;
+
+    // === RELACIÓN MANY-TO-ONE: Cada libro pertenece a UNA editorial ===
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "editorial_id", nullable = false)
+    private Editorial editorial;
 
     // Constructor vacío
     public Libro() {}
 
     // Constructor con parámetros
-    public Libro(Long id, String titulo, String autor, String isbn, int anioPublicacion) {
-        this.id = id;
+
+
+    public Libro(String titulo, String autor, String isbn, int anioPublicacion, Editorial editorial) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.anioPublicacion = anioPublicacion;
+        this.editorial = editorial;
     }
 
     // Getters y Setters
@@ -48,4 +56,12 @@ public class Libro {
 
     public int getAnioPublicacion() { return anioPublicacion; }
     public void setAnioPublicacion(int anioPublicacion) { this.anioPublicacion = anioPublicacion; }
+
+    public Editorial getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
+    }
 }
