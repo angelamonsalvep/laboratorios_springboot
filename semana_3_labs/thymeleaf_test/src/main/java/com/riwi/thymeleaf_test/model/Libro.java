@@ -1,5 +1,6 @@
 package com.riwi.thymeleaf_test.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 @Entity
@@ -23,6 +24,7 @@ public class Libro {
     private int anioPublicacion;
 
     // === RELACIÓN MANY-TO-ONE: Cada libro pertenece a UNA editorial ===
+    @Nullable
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "editorial_id", nullable = false)
     private Editorial editorial;
